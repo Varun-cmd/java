@@ -6,7 +6,7 @@ abstract class  phone {
     }
     public abstract void camera();
 }
-class smartphone extends phone{
+class smartphone extends phone{           // concrete class
     public void camera(){
         System.out.println("take a picture...");
     }
