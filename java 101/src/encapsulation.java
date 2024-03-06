@@ -21,8 +21,6 @@ class car{
 
     }
 
-
-
     public String getSpec()
     {
         return spec;
@@ -32,7 +30,6 @@ class car{
         this.brand=b;
 
     }
-
 
     public void setwheels(int n){
         this.wheels=n;
@@ -51,6 +48,14 @@ public class encapsulation {
         String brand;
         brand= in.nextLine();
         c1.setBrand(brand);
+
+
+        car c2;         // creating reference variable  object created in heap memory
+        c2=new car();   // object creation
+
+
+
+
 
 
     }
