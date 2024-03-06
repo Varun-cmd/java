@@ -4,11 +4,7 @@ class studnet{
     int roll;
     String name;
     int marks;
-
 }
-
-
-
 
 public class objects {
     public static void main(String[] args) {
@@ -32,11 +28,6 @@ public class objects {
             System.out.println("roll ="+i.roll);
 
         }
-
-
-
-
-
 
     }
 

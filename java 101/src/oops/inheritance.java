@@ -1,3 +1,5 @@
+package oops;
+
 import java.util.Scanner;
 
 class vehicles{
@@ -43,15 +45,15 @@ public class inheritance {
 
         Scanner in = new Scanner(System.in);
         String choice=in.nextLine();
-        if (choice.equals("car")) {
-            System.out.println("Enter number of cars");
+        if (choice.equals("oops.car")) {
+            System.out.println("Enter number of oops.cars");
             int n =in.nextInt();
             in.nextLine();
             cars[] c= new cars[n];
             for (int i = 0; i < n; i++) {
-            System.out.println("car brand:");
+            System.out.println("oops.car brand:");
             String brand = in.nextLine();
-            System.out.println("car price:");
+            System.out.println("oops.car price:");
             double p = in.nextDouble();
             in.nextLine();
             c[i]=new cars(brand, p);
@@ -68,11 +70,11 @@ public class inheritance {
             in.nextLine();
             bike[] b=new bike[n];
             for (int i = 0; i < n; i++) {
-                System.out.println("bike brand:");
+                System.out.println("oops.bike brand:");
                 String brand = in.nextLine();
-                System.out.println("bike price:");
+                System.out.println("oops.bike price:");
                 double p = in.nextDouble();
-                System.out.println("bike gears:");
+                System.out.println("oops.bike gears:");
                 int g = in.nextInt();
                 in.nextLine();
                 b[i] = new bike(brand, g, p);
