@@ -27,7 +27,7 @@ public class test {
         obj.show();
         obj2.show();
 
-        math m = (i,j)->i+j;
+        math m = (i,j)->i+j;        // lambda function to accecpt and return int vals
 
         int res = m.add(5,5);
         System.out.println("interface math : sum val = "+res);
