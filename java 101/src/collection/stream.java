@@ -1,6 +1,7 @@
 package collection;
 import java.util.List;
 import java.util.Arrays;
+import java.util.function.Predicate;
 import java.util.stream.*;
 
 public class stream {
@@ -21,7 +22,34 @@ public class stream {
                 .map(n ->n*2)
                 .reduce(0,(c,e)->c+e);
 
+
         System.out.println("result: "+res);
+
+        Stream<Integer> sorted = l1.stream()
+                .filter(n -> n%2==0)
+                .sorted();
+        System.out.println("Sorted values:");
+        sorted.forEach(System.out::print);
+
+
+
+
+
+
+
+
+
+
+        Predicate<Integer> p = new Predicate<Integer>() {
+            @Override
+            public boolean test(Integer i) {
+                return i % 2 == 0;
+            }
+        };
+
+
+
+
 
 
 
