@@ -36,7 +36,7 @@ public class courceController {
         return Arrays.asList(
                 new course(1,"AWS","Udemy"),
                 new course(2,"GCP","Udemy"),
-                new course(3,"Azure","microlearn learn"),
+                new course(3,"Azure","micro learn learn"),
                 new course(4,"git","Github Learn")
 
         );

@@ -11,7 +11,7 @@ public class RestApiApplication {
 
         SpringApplication.run(RestApiApplication.class, args);
         courceController c1 = new courceController();
-        System.out.println(c1.username+"\n"+c1.password);
+//        System.out.println(c1.username+"\n"+c1.password);
 
     }
 
