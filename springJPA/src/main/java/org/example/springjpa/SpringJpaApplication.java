@@ -1,15 +1,13 @@
-package org.example.jpa;
+package org.example.springjpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JpaApplication {
+public class SpringJpaApplication {
 
     public static void main(String[] args) {
-
-        SpringApplication.run(JpaApplication.class, args);
-
+        SpringApplication.run(SpringJpaApplication.class, args);
     }
 
 }

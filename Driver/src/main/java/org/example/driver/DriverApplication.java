@@ -1,70 +1,106 @@
 package org.example.driver;
 
-import net.sf.jasperreports.engine.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.*;
+import org.example.driver.Employee;
 
 
-
-@SpringBootApplication
 public class DriverApplication {
 
-    public static void main(String[] args) throws FileNotFoundException, JRException {
-        SpringApplication.run(DriverApplication.class, args);
-        System.setProperty("java.awt.headless", "true");
+    public static void main(String[] args) throws JRException, FileNotFoundException {
+
+        /* Output file location to create report in pdf form */
+        String outputFile = "/home/vkumarv/Desktop/test/sample.pdf";
+
+        /* List to hold Items */
+        List<Employee> listItems = new ArrayList<Employee>();
+
+        /* Create Employee objects */
+        Employee emp1 = new Employee();
+        Employee emp2 = new Employee();
+        Employee emp3 = new Employee();
+
+        /*first employee object*/
+        emp1.setId(101);
+        emp1.setFirstName("SAM");
+        emp1.setLastName("Smith");
+        emp1.setAddress("6th Avenue Dalton Road");
+        emp1.setSalary(10000.0);
 
 
-        String outputFile="/home/vkumarv/Desktop/test"+"SampleReport.pdf";
-        List<Employee> listItem = new ArrayList<>();
+        /*second employee object*/
+        emp2.setId(101);
+        emp2.setFirstName("JOHN");
+        emp2.setLastName("Williams");
+        emp2.setAddress("4th Square Down Town");
+        emp2.setSalary(17000.0);
+
+        /*third employee object*/
+        emp3.setId(101);
+        emp3.setFirstName("JACOB");
+        emp3.setLastName("Wilson");
+        emp3.setAddress("19th Zygon Square, Middle Town");
+        emp3.setSalary(22000.0);
 
 
-        Employee d1 = new Employee(1,"Will","Smith","Chennai",150000);
-        Employee d2 = new Employee(2,"Ram","Kumar","Madurai",125000);
-        Employee d3 = new Employee(3,"Sam","Tucker","Chennai",140000);
-        Employee d4 = new Employee(4,"John","Doe","Coimbatore",110000);
-        Employee d5 = new Employee(5,"Peter","Griffin","Mumbai",190000);
-        listItem.add(d1);
-        listItem.add(d2);
-        listItem.add(d3);
-        listItem.add(d4);
-        listItem.add(d5);
-        JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(listItem);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("CollectionBeanParams",itemsJRBean);
+        /* Add Items to List */
+        listItems.add(emp1);
+        listItems.add(emp2);
+        listItems.add(emp3);
 
+        /* Convert List to JRBeanCollectionDataSource */
+        JRBeanCollectionDataSource itemsJRBean = new JRBeanCollectionDataSource(listItems);
+
+        /* Map to hold Jasper report Parameters */
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("CollectionBeanParam", itemsJRBean);
+
+        //read jrxml file and creating jasperdesign object
         InputStream input = new FileInputStream(new File("/home/vkumarv/JaspersoftWorkspace/Student/JasperReport_A4.jrxml"));
 
         JasperDesign jasperDesign = JRXmlLoader.load(input);
 
+        /*compiling jrxml with help of JasperReport class*/
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,new JREmptyDataSource());
+        /* Using jasperReport object to generate PDF */
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
 
+        /*call jasper engine to display report in jasperviewer window*/
         JasperViewer.viewReport(jasperPrint);
-        JasperExportManager.exportReportToPdfFile(jasperPrint, outputFile);
 
-        System.out.println("File created");
+
+        /* outputStream to create PDF */
+        OutputStream outputStream = new FileOutputStream(new File(outputFile));
+
+
+        /* Write content to PDF file */
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+
+        System.out.println("File Generated");
 
     }
 
-
 }
-
-
-
-
-
-
-
-
 

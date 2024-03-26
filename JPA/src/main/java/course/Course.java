@@ -1,8 +1,18 @@
 package course;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Course {
+    @Id
     private long id;
+
+//    @Column(name="courseName") // not necessary since the names are same
     private String courseName;
+//    @Column(name="instructor")
+
     private String instructor;
 
     public long getId() {
