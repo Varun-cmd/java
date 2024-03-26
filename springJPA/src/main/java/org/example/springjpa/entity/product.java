@@ -46,4 +46,8 @@ public class product {
     private LocalDateTime updated;
 
 
+
+
+    public product(int i, String s, int i1, boolean b) {
+    }
 }
