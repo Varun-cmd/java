@@ -71,5 +71,22 @@ class productRepoTest {
         productRepo.saveAll(List.of(p1,p2,p3));
     }
 
+    @Test
+    void findAllMethod(){
+        List<product>   prods = productRepo.findAll();
+        prods.forEach((product -> {
+            System.out.println(product.getProductName());
+        }));
+    }
+
+    @Test
+    void deleteByIdMethod(){
+        int id = 5;
+        productRepo.deleteById(id);
+
+
+    }
+
+
 
 }

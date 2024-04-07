@@ -18,10 +18,10 @@ public class NutritionReportApplication {
         SpringApplication.run(NutritionReportApplication.class, args);
         String filePath = "/home/vkumarv/Desktop/Java/NutritionReport/src/main/resources/templates/nutritionreport.jrxml";
 
-        Nutrition protien = new Nutrition("Protein", 62, 83, "G");
+        Nutrition protien = new Nutrition("Protein", 62, "g", 83);
 
-        Nutrition x = new Nutrition("Protein",62,83,"G");
-        Nutrition y = new Nutrition("Carbs",62,83,"G");
+        Nutrition x = new Nutrition("1231",62,"G", 83);
+        Nutrition y = new Nutrition("Carbs",62, "G", 83);
 
         List<Nutrition> nutritionList = new ArrayList<>();
         nutritionList.add(protien);
@@ -34,7 +34,7 @@ public class NutritionReportApplication {
 
 
         MacroNutrient carb = new MacroNutrient("Carbs",28);
-        MacroNutrient fat = new MacroNutrient("fat",32);
+        MacroNutrient fat = new MacroNutrient("fatss",32);
         MacroNutrient protein = new MacroNutrient("Protein",20);
 
 

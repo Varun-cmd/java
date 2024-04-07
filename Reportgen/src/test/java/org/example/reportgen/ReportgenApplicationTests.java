@@ -1,13 +1,13 @@
-package org.example.hibernate;
+package org.example.reportgen;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HibernateApplicationTests {
+class ReportgenApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
